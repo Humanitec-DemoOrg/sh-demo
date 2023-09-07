@@ -6,6 +6,11 @@ resources:
     scope: shared
 
 spec:
+  replicas: 2
+  "labels":
+    "labelkey": "value"
+  "annotations":
+    "annotationkey": "value"
   "ingress":
     rules:
       "${resources.mydns}":

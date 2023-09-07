@@ -13,7 +13,7 @@ resource "humanitec_resource_definition" "ingress" {
         "konghq.com/host-aliase" : "",
         "konghq.com/override" : "",
         "konghq.com/path-handling" : "",
-        "konghq.com/headers.*" : ""
+        "konghq.com/headers" : ""
       },
       "api_version" : "v1",
       "class" : "alb",

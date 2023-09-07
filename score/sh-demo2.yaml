@@ -17,7 +17,7 @@ containers:
     args:
       [
         "-c",
-        "while true; do printenv &&  cat /etc/myconfig.yaml && df -h && sleep 10; done",
+        "while true; do printenv &&  cat /mnt/data/myconfig.yaml && df -h && sleep 10; done",
       ]
     variables:
       HARDCODED_VALUE: somevalue
@@ -27,14 +27,20 @@ containers:
         target: /mnt/data
         read_only: false
     files:
-      - target: /etc/myconfig.yaml
+      - target: /mnt/data/myconfig.yaml
         mode: "755"
         content:
           - |
             apiVersion: 1
             ....
             ${values.config_file}
-
+    resources:
+      limits:
+        memory: "64Mi"
+        cpu: "251m"
+      requests:
+        memory: "64Mi"
+        cpu: "251m"
 resources:
   "mydns":
     type: dns
