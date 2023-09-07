@@ -22,6 +22,7 @@ containers:
     variables:
       HARDCODED_VALUE: somevalue
       SHARED_VALUE_FROM_SECRETS: ${values.secret}
+      OKTA_CLIENT: ${externals.okta.client_id}
     volumes:
       - source: ${resources.mypvc}
         target: /mnt/data

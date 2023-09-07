@@ -22,6 +22,31 @@ resource "humanitec_resource_definition_criteria" "mongo_pvc_prod" {
   env_type               = "prod"
 }
 
+resource "humanitec_resource_definition_criteria" "mongo_dev2" {
+  resource_definition_id = humanitec_resource_definition.mongo_dev.id
+  app_id                 = humanitec_application.app2.id
+  env_type               = "development"
+}
+
+resource "humanitec_resource_definition_criteria" "mongo_prod2" {
+  resource_definition_id = humanitec_resource_definition.mongo_prod.id
+  app_id                 = humanitec_application.app2.id
+  env_type               = "prod"
+}
+
+resource "humanitec_resource_definition_criteria" "mongo_pvc_dev2" {
+  resource_definition_id = humanitec_resource_definition.mongo_pvc_dev.id
+  app_id                 = humanitec_application.app2.id
+  env_type               = "development"
+}
+
+resource "humanitec_resource_definition_criteria" "mongo_pvc_prod2" {
+  resource_definition_id = humanitec_resource_definition.mongo_pvc_prod.id
+  app_id                 = humanitec_application.app2.id
+  env_type               = "prod"
+}
+
+
 #okta
 
 resource "humanitec_resource_definition_criteria" "okta_dev" {
