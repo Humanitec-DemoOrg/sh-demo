@@ -1,0 +1,46 @@
+---
+apiVersion: score.dev/v1b1
+
+metadata:
+  name: backend
+
+service:
+  ports:
+    p80:
+      port: 80
+      targetPort: 80
+
+containers:
+  backend:
+    image: ubuntu:latest
+    command: ["/bin/bash"]
+    args:
+      [
+        "-c",
+        "while true; do printenv &&  cat /etc/myconfig.yaml && df -h && sleep 10; done",
+      ]
+    variables:
+      HARDCODED_VALUE: somevalue
+      SHARED_VALUE_FROM_SECRETS: ${values.secret}
+    volumes:
+      - source: ${resources.mypvc}
+        target: /mnt/data
+        read_only: false
+    files:
+      - target: /etc/myconfig.yaml
+        mode: "755"
+        content:
+          - |
+            apiVersion: 1
+            ....
+            ${values.config_file}
+
+resources:
+  "mydns":
+    type: dns
+  "okta":
+    type: s3
+  "mongo":
+    type: mongo
+  "mypvc":
+    type: volume
