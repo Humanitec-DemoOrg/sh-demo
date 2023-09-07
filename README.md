@@ -21,10 +21,6 @@ export HUMANITEC_ORG="myorg"
 export HUMANITEC_TOKEN="mytoken"
 
 
-export HUMANITEC_ORG="nick"
-export HUMANITEC_TOKEN="O9HVFKE8l4MhAJpHg0Ls2WZkM1qXUdnBLrn5gM3bSMJs"
-
-
 #App1
 ```
 export APP_ENV=development
