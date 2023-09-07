@@ -13,7 +13,11 @@ resource "humanitec_resource_definition" "mongo_pvc_dev" {
       "storage_class_name" : "gp2"
     }
   }
-
+  lifecycle {
+    ignore_changes = [
+      criteria
+    ]
+  }
 }
 
 resource "humanitec_resource_definition" "mongo_pvc_prod" {
@@ -30,6 +34,11 @@ resource "humanitec_resource_definition" "mongo_pvc_prod" {
       "capacity" : "10Gi",
       "storage_class_name" : "gp2"
     }
+  }
+  lifecycle {
+    ignore_changes = [
+      criteria
+    ]
   }
 
 }

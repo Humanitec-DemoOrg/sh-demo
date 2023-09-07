@@ -23,7 +23,11 @@ resource "humanitec_resource_definition" "ingress" {
     secrets_string = jsonencode({
     })
   }
-
+  lifecycle {
+    ignore_changes = [
+      criteria
+    ]
+  }
 }
 
 
@@ -50,5 +54,10 @@ EOL
     })
     secrets = {
     }
+  }
+  lifecycle {
+    ignore_changes = [
+      criteria
+    ]
   }
 }

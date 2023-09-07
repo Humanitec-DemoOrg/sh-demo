@@ -13,7 +13,7 @@ resource "humanitec_resource_definition" "mongo_dev" {
     values = {
       "source" = jsonencode(
         {
-          path = "sh/tf_modules/mongo"
+          path = "tf_modules/mongo"
           rev  = "refs/heads/main"
           url  = "https://github.com/Humanitec-DemoOrg/sh-demo.git"
         }
@@ -27,6 +27,11 @@ resource "humanitec_resource_definition" "mongo_dev" {
     }
   }
 
+  lifecycle {
+    ignore_changes = [
+      criteria
+    ]
+  }
 }
 
 resource "humanitec_resource_definition" "mongo_prod" {
@@ -44,7 +49,7 @@ resource "humanitec_resource_definition" "mongo_prod" {
     values = {
       "source" = jsonencode(
         {
-          path = "sh/tf_modules/mongo"
+          path = "tf_modules/mongo"
           rev  = "refs/heads/main"
           url  = "https://github.com/Humanitec-DemoOrg/sh-demo.git"
         }
@@ -58,4 +63,9 @@ resource "humanitec_resource_definition" "mongo_prod" {
     }
   }
 
+  lifecycle {
+    ignore_changes = [
+      criteria
+    ]
+  }
 }

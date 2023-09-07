@@ -39,8 +39,8 @@ resources:
   "mydns":
     type: dns
   "okta":
-    type: s3
+    type: oauth-client-identity
   "mongo":
-    type: mongo
+    type: mongodb
   "mypvc":
     type: volume

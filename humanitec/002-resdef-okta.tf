@@ -13,7 +13,7 @@ resource "humanitec_resource_definition" "okta_dev" {
     values = {
       "source" = jsonencode(
         {
-          path = "sh/tf_modules/okta"
+          path = "tf_modules/okta"
           rev  = "refs/heads/main"
           url  = "https://github.com/Humanitec-DemoOrg/sh-demo.git"
         }
@@ -27,7 +27,11 @@ resource "humanitec_resource_definition" "okta_dev" {
       )
     }
   }
-
+  lifecycle {
+    ignore_changes = [
+      criteria
+    ]
+  }
 }
 
 resource "humanitec_resource_definition" "okta_prod" {
@@ -59,5 +63,9 @@ resource "humanitec_resource_definition" "okta_prod" {
       )
     }
   }
-
+  lifecycle {
+    ignore_changes = [
+      criteria
+    ]
+  }
 }
