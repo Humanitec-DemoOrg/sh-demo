@@ -5,8 +5,8 @@ resource "humanitec_resource_definition" "ingress" {
   driver_type = "humanitec/ingress"
 
   driver_inputs = {
-    values = {
-      "annotations" : jsonencode({
+    values_string = jsonencode({
+      "annotations" : {
         "konghq.com/snis" : "",
         "konghq.com/request-buffering" : "",
         "konghq.com/response-buffering" : "",
@@ -14,13 +14,14 @@ resource "humanitec_resource_definition" "ingress" {
         "konghq.com/override" : "",
         "konghq.com/path-handling" : "",
         "konghq.com/headers.*" : ""
-      }),
+      },
       "api_version" : "v1",
       "class" : "alb",
       "no_tls" : true
-    }
-    secrets = {
-    }
+    })
+
+    secrets_string = jsonencode({
+    })
   }
 
 }
@@ -33,9 +34,9 @@ resource "humanitec_resource_definition" "dns" {
   driver_type = "humanitec/template"
 
   driver_inputs = {
-    values = {
+    values_string = jsonencode({
 
-      templates = jsonencode({
+      templates = {
         init      = <<EOL
 D: ".humanitec.com"
 W: {{ index (regexSplit "\\." "$${context.res.id}" -1) 1 }}
@@ -45,8 +46,8 @@ EOL
 host: $${context.app.id}-{{.init.W}}-$${context.env.id}{{.init.D}}
 EOL
         cookie    = ""
-      })
-    }
+      }
+    })
     secrets = {
     }
   }

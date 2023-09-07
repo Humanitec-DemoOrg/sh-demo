@@ -2,7 +2,7 @@ resource "humanitec_resource_definition" "okta_dev" {
   driver_type = "${var.humanitec_organization}/terraform"
   id          = "sh-okta-dev"
   name        = "sh-okta-dev"
-  type        = "s3"
+  type        = "oauth-client-identity"
 
   driver_inputs = {
     secrets = {
@@ -34,7 +34,7 @@ resource "humanitec_resource_definition" "okta_prod" {
   driver_type = "${var.humanitec_organization}/terraform"
   id          = "sh-okta-prod"
   name        = "sh-okta-prod"
-  type        = "s3"
+  type        = "oauth-client-identity"
 
   driver_inputs = {
     secrets = {
