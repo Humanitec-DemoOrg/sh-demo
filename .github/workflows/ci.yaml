@@ -1,0 +1,37 @@
+name: ci
+permissions:
+  contents: read
+  id-token: write
+on:
+  push:
+env:
+  SCORE_HUMANITEC_VERSION: 'latest'
+jobs:
+  job:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: install score-humanitec
+        uses: score-spec/setup-score@v2
+        with:
+          file: score-humanitec
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: ${{ env.SCORE_HUMANITEC_VERSION }}
+      - name: score-humanitec run - app1
+        run: |
+          score-humanitec run \
+              --env development \
+              -f score/app1/sh-demo.yaml \
+              --extensions score/app1/humanitec.score.yaml
+      - name: score-humanitec run - app2
+        run: |
+          score-humanitec run \
+              --env development \
+              -f score/app2/score.yaml \
+              --extensions score/app2/humanitec.score.yaml
+      - name: terraform validate
+        run: |
+          cd humanitec
+          terraform init -backend=false
+          terraform validate

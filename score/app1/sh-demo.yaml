@@ -17,7 +17,7 @@ containers:
     args:
       [
         "-c",
-        "while true; do printenv &&  cat /mnt/data/myconfig.yaml && df -h && sleep 10; done",
+        "while true; do printenv && cat /mnt/data/myconfig.yaml && df -h && sleep 10; done",
       ]
     variables:
       HARDCODED_VALUE: somevalue
@@ -43,11 +43,18 @@ containers:
         memory: "64Mi"
         cpu: "251m"
 resources:
-  "mydns":
+  mydns:
     type: dns
-  "okta":
+  route:
+    type: route
+    params:
+      host: ${resources.mydns.host}
+      path: /
+      port: 80
+  okta:
+    #class: specialoktaforApp1
     type: oauth-client-identity
-  "mongo":
+  mongo:
     type: mongodb
-  "mypvc":
+  mypvc:
     type: volume
