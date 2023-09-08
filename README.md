@@ -7,6 +7,7 @@ Terraform is used as `echo`, as demo, to avoid any custom providers (Atlas and O
 
 ## Deploy Humanitec Terraform
 Add your token and organization
+
 ```
 cd humanitec
 cp terraform.tfvars.example terraform.tfvars
@@ -22,6 +23,7 @@ export HUMANITEC_TOKEN="mytoken"
 ```
 
 #App1
+
 ```
 export APP_ENV=development
 export APP_NAME=sh-demo
@@ -29,6 +31,7 @@ score-humanitec delta --token $HUMANITEC_TOKEN --org $HUMANITEC_ORG --app $APP_N
 ```
 
 ### Assumes prod exists in your account and env type, deploy with UI first
+
 ```
 export APP_ENV=prod
 export APP_NAME=sh-demo
@@ -36,6 +39,7 @@ score-humanitec delta --token $HUMANITEC_TOKEN --org $HUMANITEC_ORG --app $APP_N
 ```
 
 #App2
+
 ```
 export APP_ENV=development
 export APP_NAME=sh-demo2
@@ -43,6 +47,7 @@ score-humanitec delta --token $HUMANITEC_TOKEN --org $HUMANITEC_ORG --app $APP_N
 ```
 
 ### Assumes prod exists in your account and env type, deploy with UI first
+
 ```
 export APP_ENV=prod
 export APP_NAME=sh-demo2
