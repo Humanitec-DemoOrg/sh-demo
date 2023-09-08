@@ -1,0 +1,32 @@
+name: cd-workload1
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'score/workload1/**'
+      - '.github/workflows/cd-workload1.yaml'
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+env:
+  SCORE_HUMANITEC_VERSION: latest
+  APP_NAME: sh-demo
+  WORKLOAD_NAME: workload1
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: score-spec/setup-score@v2
+        with:
+          file: score-humanitec
+          version: ${{ env.SCORE_HUMANITEC_VERSION }}
+      - name: Deploy using Score
+        run: |
+          score-humanitec delta \
+            --env development \
+            --app ${{ env.APP_NAME }} \
+            --org="${{ secrets.HUMANITEC_ORG_ID }}" \
+            --token "${{ secrets.HUMANITEC_TOKEN }}" \
+            --deploy
