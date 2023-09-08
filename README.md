@@ -22,7 +22,7 @@ export HUMANITEC_ORG="myorg"
 export HUMANITEC_TOKEN="mytoken"
 ```
 
-#App1
+### App1
 
 ```
 export APP_ENV=development
@@ -38,7 +38,7 @@ export APP_NAME=sh-demo
 score-humanitec delta --token $HUMANITEC_TOKEN --org $HUMANITEC_ORG --app $APP_NAME --env $APP_ENV -f sh-demo.yaml --extensions sh-demo-extensions.yaml --deploy
 ```
 
-#App2
+### App2
 
 ```
 export APP_ENV=development
