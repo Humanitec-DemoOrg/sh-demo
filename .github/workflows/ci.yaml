@@ -18,18 +18,18 @@ jobs:
           file: score-humanitec
           token: ${{ secrets.GITHUB_TOKEN }}
           version: ${{ env.SCORE_HUMANITEC_VERSION }}
-      - name: score-humanitec run - app1
+      - name: score-humanitec run - workload1
         run: |
           score-humanitec run \
               --env development \
-              -f score/app1/score.yaml \
-              --extensions score/app1/humanitec.score.yaml
-      - name: score-humanitec run - app2
+              -f score/workload1/score.yaml \
+              --extensions score/workload1/humanitec.score.yaml
+      - name: score-humanitec run - workload2
         run: |
           score-humanitec run \
               --env development \
-              -f score/app2/score.yaml \
-              --extensions score/app2/humanitec.score.yaml
+              -f score/workload2/score.yaml \
+              --extensions score/workload2/humanitec.score.yaml
       - name: terraform validate
         run: |
           cd humanitec
