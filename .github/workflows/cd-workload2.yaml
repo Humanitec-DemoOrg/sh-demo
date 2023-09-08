@@ -9,9 +9,6 @@ on:
     paths:
       - 'score/workload2/**'
       - '.github/workflows/cd-workload2.yaml'
-concurrency:
-  group: ${{ github.ref }}
-  cancel-in-progress: true
 env:
   SCORE_HUMANITEC_VERSION: latest
   APP_NAME: sh-demo2
@@ -24,6 +21,7 @@ jobs:
       - uses: score-spec/setup-score@v2
         with:
           file: score-humanitec
+          token: ${{ secrets.GITHUB_TOKEN }}
           version: ${{ env.SCORE_HUMANITEC_VERSION }}
       - name: Deploy using Score
         run: |
