@@ -46,6 +46,7 @@ resources:
   "mydns":
     type: dns
   "okta":
+    #class: specialoktaforApp1
     type: oauth-client-identity
   "mongo":
     type: mongodb
