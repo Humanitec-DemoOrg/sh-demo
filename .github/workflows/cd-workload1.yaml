@@ -30,4 +30,6 @@ jobs:
             --app ${{ env.APP_NAME }} \
             --org="${{ secrets.HUMANITEC_ORG_ID }}" \
             --token "${{ secrets.HUMANITEC_TOKEN }}" \
+            -f score/${{ env.WORKLOAD_NAME }}/score.yaml \
+            --extensions score/${{ env.WORKLOAD_NAME }}/humanitec.score.yaml
             --deploy
