@@ -31,5 +31,5 @@ jobs:
             --org="${{ secrets.HUMANITEC_ORG }}" \
             --token "${{ secrets.HUMANITEC_TOKEN }}" \
             -f score/${{ env.WORKLOAD_NAME }}/score.yaml \
-            --extensions score/${{ env.WORKLOAD_NAME }}/humanitec.score.yaml
+            --extensions score/${{ env.WORKLOAD_NAME }}/humanitec.score.yaml \
             --deploy
