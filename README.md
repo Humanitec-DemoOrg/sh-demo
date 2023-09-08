@@ -19,7 +19,7 @@ terraform init && terraform apply -auto-approve
 cd score
 export HUMANITEC_ORG="myorg"
 export HUMANITEC_TOKEN="mytoken"
-
+```
 
 #App1
 ```
