@@ -22,7 +22,7 @@ jobs:
         run: |
           score-humanitec run \
               --env development \
-              -f score/app1/sh-demo.yaml \
+              -f score/app1/score.yaml \
               --extensions score/app1/humanitec.score.yaml
       - name: score-humanitec run - app2
         run: |
