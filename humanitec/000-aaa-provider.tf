@@ -15,3 +15,7 @@ provider "humanitec" {
 variable "humanitec_organization" {}
 
 variable "token" {}
+
+variable "mongodb_connectionstring" {
+  default = " "
+}
